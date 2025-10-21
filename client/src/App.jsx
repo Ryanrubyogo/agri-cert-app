@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout'; // Import the new Layout
+import Layout from './components/Layout';
 import FarmersListPage from './pages/FarmersListPage';
 import FarmerDetailPage from './pages/FarmerDetailPage';
 import InspectionFormPage from './pages/InspectionFormPage';
@@ -7,7 +7,7 @@ import InspectionFormPage from './pages/InspectionFormPage';
 function App() {
   return (
     <BrowserRouter>
-      <Layout> {/* The Layout component now wraps the pages */}
+      <Layout> 
         <Routes>
           <Route path="/" element={<FarmersListPage />} />
           <Route path="/farmers/:farmerId" element={<FarmerDetailPage />} />

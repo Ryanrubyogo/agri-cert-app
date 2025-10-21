@@ -1,0 +1,51 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Farmer {
+  +id: int
+  +name: string
+  +phone: string
+  +email: string
+  +county: string
+}
+
+class Farm {
+  +id: int
+  +farmerId: int
+  +farmName: string
+  +location: string
+  +areaHa: float
+}
+
+class Field {
+  +id: int
+  +farmId: int
+  +name: string
+  +crop: string
+  +areaHa: float
+}
+
+class Inspection {
+  +id: int
+  +farmId: int
+  +date: datetime
+  +inspectorName: string
+  +status: string
+  +complianceScore: int
+}
+
+class Certificate {
+  +id: int
+  +farmId: int
+  +certificateNo: string
+  +issueDate: date
+  +expiryDate: date
+  +pdfUrl: string
+}
+
+Farmer "1" -- "1..*" Farm : owns
+Farm "1" -- "1..*" Field : contains
+Farm "1" -- "0..*" Inspection : undergoes
+Farm "1" -- "0..*" Certificate : has
+
+@enduml

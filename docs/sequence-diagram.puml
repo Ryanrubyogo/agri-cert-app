@@ -1,0 +1,43 @@
+@startuml
+actor Agronomist
+participant "React SPA" as Frontend
+participant "Express API" as Backend
+participant "pdfGenerator.js" as PDFService
+database "In-Memory Store" as Store
+
+Agronomist -> Frontend: Clicks "Approve" for an inspection
+activate Frontend
+
+Frontend -> Backend: POST /api/inspections/:id/approve
+activate Backend
+
+Backend -> Store: Find Inspection by ID
+activate Store
+Store --> Backend: Return Inspection data
+deactivate Store
+
+alt if inspection.complianceScore >= 80
+    Backend -> PDFService: generateCertificate(farm, farmer, inspection, certData)
+    activate PDFService
+    PDFService -> PDFService: Construct PDF document with pdfkit
+    PDFService -> Filesystem: Save PDF to /public/certificates
+    PDFService --> Backend: Return public PDF URL
+    deactivate PDFService
+
+    Backend -> Store: Create new Certificate record with pdfUrl
+    activate Store
+    Store --> Backend: Confirm creation
+    deactivate Store
+
+    Backend --> Frontend: 201 Created (with new Certificate data)
+else else
+    Backend --> Frontend: 400 Bad Request (e.g., "Score too low")
+end
+
+deactivate Backend
+
+Frontend -> Frontend: Update state with new Certificate data
+Frontend --> Agronomist: UI updates to show "Download Certificate" link
+deactivate Frontend
+
+@enduml
