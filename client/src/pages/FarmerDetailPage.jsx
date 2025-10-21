@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import apiClient from '../apiConfig';
+import apiClient, { apiBaseUrl } from '../apiConfig';
 import { Tab } from '@headlessui/react';
 import Modal from '../components/Modal';
 import FieldForm from '../components/FieldForm';
@@ -221,7 +221,7 @@ function FarmerDetailPage() {
 
                                             {farm.certificates.length > 0 ? (
                                                 <div className="text-green-700 font-semibold">
-                                                    <a href={`http://localhost:3001${farm.certificates[0].pdfUrl}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-green-100 text-green-800 py-1 px-3 rounded-full text-sm hover:bg-green-200">
+                                                    <a href={`${apiBaseUrl}${farm.certificates[0].pdfUrl}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-green-100 text-green-800 py-1 px-3 rounded-full text-sm hover:bg-green-200">
                                                         Download Certificate
                                                     </a>
                                                 </div>
