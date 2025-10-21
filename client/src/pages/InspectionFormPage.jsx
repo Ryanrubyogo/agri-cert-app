@@ -10,6 +10,11 @@ const CHECKLIST_QUESTIONS = [
     'Are records of soil treatment and fertilization available?',
     'Is all farm equipment properly sanitized and maintained?',
     'Are staff trained in food safety and hygiene protocols?',
+    'Any synthetic inputs in last 36 months?',
+    'Adequate buffer zones?',
+    'Organic seed or permitted exceptions?',
+    'Compost/soil fertility managed organically?',
+   'Recordkeeping/logs available?'
 ];
 
 function InspectionFormPage() {
