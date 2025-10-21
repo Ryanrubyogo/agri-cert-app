@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import apiClient from '../apiConfig'
 import { toast } from 'react-hot-toast';
 import Modal from '../components/Modal';
 import FarmerForm from '../components/FarmerForm';
@@ -15,10 +15,10 @@ function FarmersListPage() {
     const [isFarmerModalOpen, setIsFarmerModalOpen] = useState(false);
     const [editingFarmer, setEditingFarmer] = useState(null);
 
-    const fetchFarmers = useCallback(async () => {
+     const fetchFarmers = useCallback(async () => {
         setLoading(true);
         try {
-            const response = await axios.get(`${API_URL}/farmers`);
+            const response = await apiClient.get('/api/farmers');
             setFarmers(response.data);
         } catch (error) {
             console.error('Error fetching farmers:', error);
@@ -50,10 +50,10 @@ function FarmersListPage() {
     const handleSaveFarmer = async (farmerData) => {
         try {
             if (editingFarmer) {
-                await axios.put(`${API_URL}/farmers/${editingFarmer.id}`, farmerData);
+                await apiClient.put(`/api/farmers/${editingFarmer.id}`, farmerData);
                 toast.success('Farmer updated successfully!');
             } else {
-                await axios.post(`${API_URL}/farmers`, farmerData);
+                await apiClient.post(`/api/farmers`, farmerData);
                 toast.success('Farmer added successfully!');
             }
             handleCloseFarmerModal();
@@ -64,11 +64,10 @@ function FarmersListPage() {
         }
     };
 
-    // --- START: New Delete Farmer Function ---
     const handleDeleteFarmer = async (farmerId) => {
         if (window.confirm('Are you sure you want to permanently delete this farmer and all their associated data?')) {
             try {
-                await axios.delete(`${API_URL}/farmers/${farmerId}`);
+                await apiClient.delete(`/api/farmers/${farmerId}`);
                 toast.success('Farmer deleted successfully!');
                 fetchFarmers();
             } catch (error) {
