@@ -33,7 +33,7 @@ function generateCertificate(farm, farmer, inspection, certificateData) {
 
 function generateHeader(doc) {
     const logoPath = path.join(__dirname, '..', 'assets', 'logo.svg');
-    const logo = fs.readFileSync(logoPath);
+    const logo = fs.readFileSync(logoPath).toString('utf8');
 
     doc.image(logo, 50, 45, { width: 120 });
 
