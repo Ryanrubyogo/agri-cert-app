@@ -33,16 +33,15 @@ function generateCertificate(farm, farmer, inspection, certificateData) {
 
 function generateHeader(doc) {
     const logoPath = path.join(__dirname, '..', 'assets', 'logo.png');
-    const logo = fs.readFileSync(logoPath).toString('utf8');
-
-    doc.image(logo, 50, 45, { width: 120 });
+    
+    doc.image(logoPath, 50, 45, { width: 120 });
 
     doc.fillColor(BRAND_GREEN)
        .fontSize(20)
        .font('Helvetica-Bold')
        .text('Certificate of Organic Compliance', 200, 65, { align: 'right' });
 
-    doc.moveDown(4); // Add space after the header
+    doc.moveDown(4);
 }
 
 function generateFarmerInfo(doc, farmer, farm) {
@@ -80,10 +79,8 @@ function generateInspectionDetails(doc, inspection) {
 function generateCertificationTerms(doc) {
     drawSectionLine(doc, doc.y);
     doc.moveDown();
-
     doc.fillColor(BRAND_GREEN).fontSize(14).font('Helvetica-Bold').text('Certification Terms');
     doc.moveDown();
-
     doc.fillColor(MUTED_COLOR).fontSize(10).font('Helvetica')
        .text('This certificate confirms that the aforementioned farm complies with the organic standards set forth by PESIRA. This certification is subject to annual review and may be revoked if standards are not maintained. Any use of prohibited substances will result in immediate termination of this certification.', {
            align: 'justify'
