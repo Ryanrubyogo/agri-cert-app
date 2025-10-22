@@ -37,5 +37,5 @@ module.exports = {
   farms, nextFarmId,
   fields, nextFieldId,
   inspections, nextInspectionId,
-  certificates, nextCertificateId // <-- ADDED THIS LINE
+  certificates, nextCertificateId 
 };
