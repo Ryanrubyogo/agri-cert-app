@@ -30,7 +30,7 @@ The application is deployed and fully functional. You can access the live versio
 ![Farmer Registry Screenshot](docs/images/farmerRegistry.png)
 
 ### Farmer Detail Page with Tabbed Interface
-![Farmers Details Screenshot](docs/images/farmersDetails.png)
+![Farmers Details Screenshot](docs/images/farmerDetails.png)
 
 ### Inspection Form
 ![Inspection Form Screenshot](docs/images/inspectionForm.png)
@@ -52,8 +52,8 @@ The application is deployed and fully functional. You can access the live versio
 ## Bonus Deliverables
 
 -   **UML Diagrams:** The architectural diagrams for the application are available in the `/docs` directory.
-    -   [Class Diagram (Source)](./docs/class-diagram.puml)
-    -   [Sequence Diagram (Source)](./docs/sequence-diagram.puml)
+    -   [Class Diagram (Source)](./docs/class-diagram.svg)
+    -   [Sequence Diagram (Source)](./docs/sequence-diagram.svg)
 
 ---
 

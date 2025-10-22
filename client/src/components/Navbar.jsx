@@ -5,7 +5,7 @@ function Navbar() {
     <nav className="bg-surface p-4 mb-8 shadow-md border-b-2 border-brand-green">
       <div className="max-w-7xl mx-auto">
         <Link to="/">
-          <img src="/logo.svg" alt="PESIRA Logo" className="h-8 w-auto" />
+          <img src="/logo.png" alt="PESIRA Logo" className="h-14 w-auto" />
         </Link>
       </div>
     </nav>
